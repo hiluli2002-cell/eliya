@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: black;
+  height: 100vh;
+  transition: background 0.3s ease;
+}
+
+/* האלמנט הכתום שזז במסך */
+.candy-plate {
+  position: fixed;
+  top: 40%;
+  left: 45%;
+  z-index: 9999;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s ease;
+  
+  /* תנועה אקראית ואיטית */
+  animation: chaosMove 25s linear infinite; 
+}
+
+/* הגדרת גודל לתמונה הכתומה */
+.orange-image {
+  width: 80px;  /* תוכלי לשנות את הגודל כאן לפי הצורך */
+  height: auto;
+  pointer-events: none; /* מונע בעיות לחיצה בדיפ */
+}
+
+.candy-plate:active {
+  transform: scale(0.8);
+}
+
+/* כפתור קפה קר */
+.iced-coffee-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 10000;
+  font-size: 60px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.6));
+}
+
+.iced-coffee-btn:hover {
+  transform: scale(1.1);
+}
+
+.iced-coffee-btn:active {
+  transform: scale(0.9);
+}
+
+/* כל מיכלי התמונות */
+.image-div {
+  position: absolute;
+  animation-name: chaosMove;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  
+  --mouse-x: 0px;
+  --mouse-y: 0px;
+  
+  transition: margin 0.25s ease-out; 
+  margin-left: var(--mouse-x);
+  margin-top: var(--mouse-y);
+}
+
+/* התמונות עצמן */
+.character {
+  width: 180px;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* מיקומים התחלתיים לתמונות הראשונות */
+.img1 { top: 10%; left: 5%; animation-duration: 7s; }
+.img2 { top: 30%; left: 20%; animation-duration: 11s; }
+.img3 { top: 60%; left: 15%; animation-duration: 9s; }
+.img4 { top: 20%; left: 70%; animation-duration: 13s; }
+.img5 { top: 50%; left: 80%; animation-duration: 8s; }
+.img6 { top: 75%; left: 40%; animation-duration: 10s; }
+.img7 { top: 15%; left: 50%; animation-duration: 14s; }
+.img8 { top: 80%; left: 10%; animation-duration: 12s; }
+.img9 { top: 45%; left: 60%; animation-duration: 9s; }
+.img10 { top: 5%; left: 85%; animation-duration: 15s; }
+
+/* אלמנט הנצנץ */
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  user-select: none;
+  animation: sparkleFade 0.8s ease-out forwards;
+}
+
+/* תנועה כאוטית משותפת */
+@keyframes chaosMove {
+  0% { transform: translate(0px, 0px) rotate(0deg) scale(1); }
+  20% { transform: translate(200px, -100px) rotate(90deg) scale(1.1); }
+  40% { transform: translate(-150px, 150px) rotate(-120deg) scale(0.9); }
+  60% { transform: translate(250px, 50px) rotate(200deg) scale(1.2); }
+  80% { transform: translate(-200px, -150px) rotate(-300deg) scale(0.8); }
+  100% { transform: translate(0px, 0px) rotate(360deg) scale(1); }
+}
+
+@keyframes sparkleFade {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--move-x), var(--move-y)) scale(0) rotate(180deg);
+    opacity: 0;
+  }
+}
